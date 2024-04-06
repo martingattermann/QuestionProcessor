@@ -12,7 +12,7 @@ def read_root():
 
 @app.post("/question")
 def question(question: str = Body(...)):
-    llm = Ollama(model="gemma:2b", base_url="https://ollama:11434")
+    llm = Ollama(model="gemma:2b", base_url="http://ollama:11434")
     output_parser = StrOutputParser()
     prompt = ChatPromptTemplate.from_messages([
         ("system", "You are world class anckerman"),
