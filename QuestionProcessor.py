@@ -6,14 +6,13 @@ from langchain_core.output_parsers import StrOutputParser
 
 app = FastAPI()
 
-
 @app.get("/")
 def read_root():
     return {"Hello": "World!"}
 
 @app.post("/question")
 def question(question: str = Body(...)):
-    llm = Ollama(model="gemma:2b")
+    llm = Ollama(model="gemma:2b", base_url="https://ollama:11434")
     output_parser = StrOutputParser()
     prompt = ChatPromptTemplate.from_messages([
         ("system", "You are world class anckerman"),
